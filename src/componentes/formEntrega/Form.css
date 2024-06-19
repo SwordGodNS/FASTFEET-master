@@ -1,0 +1,47 @@
+/* Form.css */
+
+.form-component form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 60px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-component div {
+    margin-bottom: 10px;
+}
+
+.form-component label {
+    margin-right: 10px;
+    display: flex; /* Para alinhar corretamente os checkboxes */
+    align-items: center; /* Alinhar verticalmente os checkboxes */
+}
+
+/* Estilo do checkbox */
+.form-component input[type="checkbox"] {
+    margin-right: 5px;
+    vertical-align: middle; /* Alinha verticalmente o checkbox com o texto */
+    appearance: none; /* Remove o estilo padrão do checkbox */
+    width: 16px; /* Define o tamanho do checkbox */
+    height: 16px; /* Define o tamanho do checkbox */
+    border: 2px solid #000; /* Adiciona uma borda ao redor do checkbox */
+    border-radius: 4px; /* Arredonda as bordas do checkbox */
+    cursor: pointer; /* Muda o cursor ao passar por cima */
+    outline: none; /* Remove o contorno padrão do foco */
+    position: relative; /* Para permitir o posicionamento do "X" */
+}
+
+/* Ícone "X" dentro do checkbox quando marcado */
+.form-component input[type="checkbox"]:checked::before {
+    content: 'X';
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 2px;
+    font-size: 17px; /* Tamanho do ícone */
+    color: #000; /* Cor do ícone */
+}

@@ -1,0 +1,86 @@
+/* Navigator.css */
+
+.navbar {
+    width: 100%;
+    background-color: rgba(58, 39, 233, 0.774);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    z-index: 1000;
+}
+
+#logop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    z-index: 1000;
+}
+
+#logop img {
+    height: 70px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+.navbar li {
+    color: white;
+    cursor: pointer;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    transform: translateY(12%);
+    padding: 5px 5px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.089);
+}
+
+/* Estilo para a logo e Login com posicionamento absoluto */
+.navbar .logo-link {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-40%);
+}
+
+/* Dimensões específicas para a logo */
+.navbar .logo-link img {
+    height: 50px; /* Ajuste conforme necessário */
+    width: auto;
+}
+
+.navbar .login-link {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-20%);
+    color: lightblue;
+    font-size: 1.1rem; /* Ajuste conforme necessário */
+}
+
+.navbar .login-link a:hover {
+    background-color: rgba(173, 216, 230, 0.103);
+}
