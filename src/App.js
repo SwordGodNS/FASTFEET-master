@@ -1,26 +1,28 @@
-import './App.css';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Footer from './componentes/footer/Footer';
-import  Navigator from './componentes/navigator/Navigator' ;
+import Navigator from './componentes/navigator/Navigator';
 import Login from './componentes/login/Login';
 import Form from './componentes/formEntrega/Form';
-import FormAdmin from './componentes/formAdmin/FormAdmin'
-import FormAdd from './componentes/formAdd/FormAdd'
+import FormAdmin from './componentes/formAdmin/FormAdmin';
+import FormAdd from './componentes/formAdd/FormAdd';
+import CadastroSelect from './componentes/cadastroSelect/CadastroSelect';
 
 function App() {
   return (
     <Router>
-    <Navigator />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="login" element={<Login />} />
-      <Route path="form" element={<Form />} />
-      <Route path="formAdmin" element={<FormAdmin />} />
-      <Route path="formAdd" element={<FormAdd />} />
-    </Routes>
-    <Footer />
-  </Router>  
+      <Navigator />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/formAdmin" element={<FormAdmin />} />
+        <Route path="/formAdd" element={<FormAdd />} />
+        <Route path="/cadastro-select" element={<CadastroSelect />} /> {/* Verifique o path correto aqui */}
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
