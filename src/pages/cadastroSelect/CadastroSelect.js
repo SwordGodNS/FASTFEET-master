@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CadastroSelect.css';
 
-const CadastroSelect = () => {
+const CadastroSelect = ({ setIsAdmin }) => {
   const [selectedOption, setSelectedOption] = useState('');
   const navigate = useNavigate();
 
@@ -13,12 +13,17 @@ const CadastroSelect = () => {
   const handleProceed = () => {
     switch (selectedOption) {
       case 'entregador':
-        navigate('/formAdmin'); // Alterado para '/formAdmin'
+        setIsAdmin(true);
+        localStorage.setItem('isAdmin', 'true');
+        navigate('/formAdmin');
         break;
       case 'destinatario':
+       
+        localStorage.removeItem('isAdmin');
         navigate('/formAdd');
         break;
       case 'entrega':
+        
         navigate('/form');
         break;
       default:

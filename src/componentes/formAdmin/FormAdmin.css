@@ -1,69 +1,64 @@
-/* FormAdmin.css */
-
 .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ajustei para ocupar a altura total da viewport */
-}
-
-.form-content {
+    height: 100vh;
+  }
+  
+  .form-content {
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 60px; /* Ajustei o padding interno */
+    padding: 60px;
     border-radius: 10px;
     border: 1px solid #000;
-    max-width: 400px; /* Defini um máximo de largura */
-    width: 100%; /* Para ocupar toda a largura disponível */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para destacar o formulário */
-}
-
-form div {
-    margin-bottom: 10px;
-    position: relative; /* Permite a posição absoluta da mensagem de erro */
-}
-
-label {
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  
+  .form-field {
+    margin-bottom: 20px; 
+    width: 100%; 
+    position: relative; 
+  }
+  
+  .form-content label {
     display: block;
     margin-bottom: 5px;
-}
-
-input {
+  }
+  
+  .form-content input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-
-button {
+  }
+  
+  .form-content button {
     padding: 10px 15px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px; /* Espaçamento superior para o botão */
-}
-
-button:hover {
+    margin-top: 10px;
+  }
+  
+  .form-content button:hover {
     background-color: #218838;
-}
-
-/* Estilo da mensagem de erro */
-.error-message {
+  }
+  
+  .error-message {
     color: red;
     font-size: 12px;
-    margin-top: 5px;
-    position: absolute; /* Posição absoluta */
-    bottom: -5px; /* Ajusta a posição da mensagem de erro */
-    visibility: hidden; /* Torna o espaço reservado */
-}
-
-.error-message.visible {
-    visibility: visible; /* Torna a mensagem de erro visível */
-}
-
-/* Espaço reservado para a mensagem de erro */
-.error-placeholder {
-    min-height: 20px; /* Altura mínima para a mensagem de erro */
-}
+    position: absolute;
+    top: calc(100% + -2px); 
+    left: 0; 
+  }
+  
+  .error-message.visible {
+    display: block;
+  }

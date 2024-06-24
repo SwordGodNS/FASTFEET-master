@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
 import './Login.css';
 
-function App() {
+const LoginPage = ({ setIsAdmin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('rememberedEmail');
+    if (storedEmail) {
+      setEmail(storedEmail);
+      setRememberMe(true);
+    }
+  }, []);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -21,16 +30,31 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Remember Me:', rememberMe);
+
+   
+    if (email === 'admin@example.com' && password === 'admin123') {
+      setIsAdmin(true); 
+
+  
+      if (rememberMe) {
+        localStorage.setItem('rememberedEmail', email);
+      } else {
+        localStorage.removeItem('rememberedEmail');
+      }
+
+      
+      window.location.href = '/cadastroselect';
+    } else {
+ 
+      alert('Credenciais inválidas');
+    }
   };
 
   return (
     <div className="App">
       <div className="login-container">
         <h2>Acesse sua conta</h2>
-        <form onSubmit={handleSubmit}>
+        <form id="loginForm" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">
               <FaUser className="icon" /> Email:
@@ -67,9 +91,8 @@ function App() {
               Lembre de mim
             </label>
           </div>
-          <button type="submit">Entrar</button>
-          <div className="forgot-password">
-          <a href="/cadastro-select">Realizar um cadastro</a>
+          <div className="button-container">
+            <button type="submit">Entrar</button>
           </div>
         </form>
         <footer>
@@ -80,4 +103,4 @@ function App() {
   );
 }
 
-export default App;
+export default LoginPage;
