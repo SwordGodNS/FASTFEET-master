@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignInAlt, faUserShield, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserShield, faSignOutAlt, faTruck } from '@fortawesome/free-solid-svg-icons';
 import logoPrincipal from '../../img/logoPrincipal.png';
 import './Navigator.css';
 
@@ -10,8 +10,9 @@ const Navigator = ({ isAdmin, setIsAdmin }) => {
   const [showLogout, setShowLogout] = useState(false);
 
   const handleLogout = () => {
-    setIsAdmin(false); 
-    navigate('/'); 
+    setIsAdmin(false);
+    localStorage.removeItem('isAdmin');
+    navigate('/');
   };
 
   const handleMouseEnter = () => {
@@ -30,29 +31,29 @@ const Navigator = ({ isAdmin, setIsAdmin }) => {
             <img src={logoPrincipal} alt="Logo Principal" />
           </Link>
         </li>
-        {}
         {isAdmin && (
-          <li className="login-link" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <Link to="/cadastroSelect">
-              <FontAwesomeIcon icon={faUserShield} /> Admin
+          <li className="entrega-link">
+            <Link to="/entregaVis">
+              <FontAwesomeIcon icon={faTruck} /> Visualizar entregas
             </Link>
-            {showLogout && (
-              <ul className="dropdown">
-                <li>
-                  <button className="logout-button" onClick={handleLogout}>
-                    <FontAwesomeIcon icon={faSignOutAlt} /> Sair
-                  </button>
-                </li>
-              </ul>
-            )}
           </li>
         )}
-        {}
-        {!isAdmin && (
-          <li className="login-link">
-            <Link to="/login">
-              <FontAwesomeIcon icon={faSignInAlt} /> Login
-            </Link>
+        {isAdmin && (
+          <li className="admin-links">
+            <div className="admin-link" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <Link to="/cadastroSelect">
+                <FontAwesomeIcon icon={faUserShield} /> Admin
+              </Link>
+              {showLogout && (
+                <ul className="dropdown">
+                  <li>
+                    <button className="logout-button" onClick={handleLogout}>
+                      <FontAwesomeIcon icon={faSignOutAlt} /> Sair
+                    </button>
+                  </li>
+                </ul>
+              )}
+            </div>
           </li>
         )}
       </ul>

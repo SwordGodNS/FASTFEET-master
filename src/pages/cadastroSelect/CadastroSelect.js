@@ -18,12 +18,12 @@ const CadastroSelect = ({ setIsAdmin }) => {
         navigate('/formAdmin');
         break;
       case 'destinatario':
-       
+        setIsAdmin(false); // Certifique-se de definir como false se não for admin
         localStorage.removeItem('isAdmin');
         navigate('/formAdd');
         break;
       case 'entrega':
-        
+        setIsAdmin(false); // Certifique-se de definir como false se não for admin
         navigate('/form');
         break;
       default:
@@ -34,8 +34,8 @@ const CadastroSelect = ({ setIsAdmin }) => {
 
   return (
     <div className="cadastro-select-container">
-      <h2>Primeiro escolha</h2>
-      <p>Qual cadastro deseja realizar?</p>
+      <h2>Olá, Bem vindo Admin </h2>
+      <p>Deseja realizar um cadastro?</p>
       <div className="select-container">
         <select value={selectedOption} onChange={handleOptionChange}>
           <option value="">Selecione uma opção</option>

@@ -1,0 +1,18 @@
+.entrega-vis-container {
+    background-color: rgba(255, 255, 255, 0.918);
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    margin: 100px auto;
+    text-align: center;
+  }
+  
+  .entrega-vis-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .entrega-vis-container p {
+    margin-bottom: 10px;
+  }
+  

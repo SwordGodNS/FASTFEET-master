@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const LoginPage = ({ setIsAdmin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('rememberedEmail');
@@ -31,21 +32,17 @@ const LoginPage = ({ setIsAdmin }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-   
     if (email === 'admin@example.com' && password === 'admin123') {
-      setIsAdmin(true); 
+      setIsAdmin(true);
 
-  
       if (rememberMe) {
         localStorage.setItem('rememberedEmail', email);
       } else {
         localStorage.removeItem('rememberedEmail');
       }
 
-      
-      window.location.href = '/cadastroselect';
+      navigate('/cadastroSelect');
     } else {
- 
       alert('Credenciais inválidas');
     }
   };
