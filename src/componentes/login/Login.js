@@ -34,6 +34,7 @@ const LoginPage = ({ setIsAdmin }) => {
 
     if (email === 'admin@example.com' && password === 'admin123') {
       setIsAdmin(true);
+      localStorage.setItem('isAdmin', 'true');
 
       if (rememberMe) {
         localStorage.setItem('rememberedEmail', email);

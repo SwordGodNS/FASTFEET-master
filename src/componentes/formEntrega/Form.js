@@ -13,10 +13,7 @@ const Form = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const isAdminStored = localStorage.getItem('isAdmin') === 'true';
-    if (!isAdminStored) {
-      navigate('/');
-    }
+    // Remove a verificação se é admin no Form
   }, [navigate]);
 
   const handleChange = (e) => {
@@ -29,10 +26,7 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-
-
-
+    // Process form data here
     navigate('/cadastroSucesso');
   };
 

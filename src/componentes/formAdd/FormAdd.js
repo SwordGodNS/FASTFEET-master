@@ -30,7 +30,6 @@ const FormAdd = () => {
       [name]: value
     });
 
-    
     if (name === 'complemento') {
       setErrors({
         ...errors,
@@ -62,7 +61,6 @@ const FormAdd = () => {
       newErrors.complemento = 'Por favor, preencha o complemento';
     }
 
-
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) {
@@ -72,7 +70,6 @@ const FormAdd = () => {
     console.log('Dados do formulário:', formData);
 
     navigate('/cadastroSucesso');
-
 
     setFormData({
       nome: '',

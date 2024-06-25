@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserShield, faSignOutAlt, faTruck } from '@fortawesome/free-solid-svg-icons';
 import logoPrincipal from '../../img/logoPrincipal.png';
@@ -7,6 +7,7 @@ import './Navigator.css';
 
 const Navigator = ({ isAdmin, setIsAdmin }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showLogout, setShowLogout] = useState(false);
 
   const handleLogout = () => {
@@ -31,7 +32,7 @@ const Navigator = ({ isAdmin, setIsAdmin }) => {
             <img src={logoPrincipal} alt="Logo Principal" />
           </Link>
         </li>
-        {isAdmin && (
+        {isAdmin && location.pathname !== '/formAdd' && location.pathname !== '/formAdmin' && location.pathname !== '/form' && (
           <li className="entrega-link">
             <Link to="/entregaVis">
               <FontAwesomeIcon icon={faTruck} /> Visualizar entregas
