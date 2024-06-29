@@ -7,7 +7,7 @@
   
   .form-content {
     background-color: rgba(255, 255, 255, 0.918);
-    padding: 60px;
+    /* padding: 20px; */
     border-radius: 20px;
     border: 1px solid #000;
     max-width: 400px;
@@ -16,6 +16,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px; /* Ajusta a margem superior */
+    margin-bottom: 10px;
+
   }
   
   .form-field {

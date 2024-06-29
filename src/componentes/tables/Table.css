@@ -1,27 +1,25 @@
 .customTable {
-    display: flex;
-    flex-direction: column;
     width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
-.customTable > thead *, .customTable > tbody * {
-    margin: 0;
-    padding: 0;
+.customTable th, .customTable td {
+    padding: 0.5rem;
+    text-align: left;
 }
 
-.customTable > thead, .customTable > tbody {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.customTable > thead {
+.customTable th {
     background-color: rgba(58, 39, 233, 0.774);
     color: #ffffff;
-    padding: 0.5rem;
-    border-radius: 8px;
 }
 
-.customTable > tbody > tr {
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+.customTable tbody tr:nth-child(even) {
+    background-color: rgba(58, 39, 233, 0.16);
+}
+
+#tableTitle {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
 }

@@ -2,53 +2,34 @@ import './Table.css';
 
 const Table = ({columns, data, title}) => {
     return (
+        <div className="tableContainer">
+            {title && <h2 id="tableTitle">{title}</h2>}
             <table className="customTable">
                 <thead>
-                    {/* {columns?.length > 0 ?
-                        
-                            <th colSpan={columns?.length + 1} id="tableTitle">
-                                {title}
-                            </th>
-                         : null} */}
+                <tr>
                     {columns.map((column, index) => (
-                                <th key={index}>
-                                    {column.toUpperCase()}
-                                </th>
+                        <th key={index}>
+                            {column.toUpperCase()}
+                        </th>
                     ))}
+                </tr>
                 </thead>
                 <tbody>
-                    {data.map((row) => {
-                        return (
-                            <tr key={row.id}>
-                                {row.destinatario.nome} 
-                            </tr>
-                        );
-                    })}
+                {data.map((row) => (
+                    <tr key={row.id}>
+                        <td>{row.destinatario.nome}</td>
+                        <td>{row.destinatario.telefone}</td>
+                        <td>{row.destinatario.rua}</td>
+                        <td>{row.destinatario.numero}</td>
+                        <td>{row.destinatario.complemento}</td>
+                        <td>{row.destinatario.CEP}</td>
+                        <td>{row.entregue ? 'Entregue' : 'Não entregue'}</td>
+                    </tr>
+                ))}
                 </tbody>
             </table>
+        </div>
     );
 }
 
 export default Table
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

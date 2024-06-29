@@ -47,7 +47,7 @@ function App() {
         />
         <Route path="/login" element={<LoginPage setIsAdmin={setIsAdmin} setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/loginEntregador" element={<UserLoginPage setIsAuthenticated={setIsAuthenticated} />} />
-        <Route path="/form" element={isAuthenticated ? <Form /> : <Navigate to="/loginEntregador" />} />
+        <Route path="/form" element={isAuthenticated ? <Form /> : <Navigate to="/form" />} />
         <Route path="/formEntregador" element={isAdmin ? <FormEntregador /> : <Navigate to="/login" />} />
         <Route path="/formAdd" element={isAdmin ? <FormAdd /> : <Navigate to="/login" />} />
         <Route path="/cadastroSelect" element={isAdmin ? <CadastroSelect setIsAdmin={setIsAdmin} /> : <Navigate to="/login" />} />
