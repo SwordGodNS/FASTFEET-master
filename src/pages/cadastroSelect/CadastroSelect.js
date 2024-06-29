@@ -15,7 +15,7 @@ const CadastroSelect = ({ setIsAdmin }) => {
       case 'entregador':
         setIsAdmin(true);
         localStorage.setItem('isAdmin', 'true');
-        navigate('/formAdmin');
+        navigate('/formEntregador');
         break;
       case 'destinatario':
         setIsAdmin(true);

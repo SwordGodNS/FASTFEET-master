@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './FormAdmin.css';
+import './FormEntregador.css';
 
-const FormAdmin = () => {
+const FormEntregador = () => {
   const [formData, setFormData] = useState({
     nome: '',
     cpf: '',
@@ -29,7 +29,7 @@ const FormAdmin = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.nome.trim() === '') {
@@ -102,7 +102,26 @@ const FormAdmin = () => {
     });
 
     console.log('Dados do formulário:', formData);
-    navigate('/cadastroSucesso'); // Redirect to success page
+    const token = localStorage.getItem('token')
+
+    const response = await fetch('http://localhost:3333/usuario/create', {
+      method: 'post',
+      headers: {
+        'Content-Type':'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(
+       formData
+      )
+     });
+     
+     if (response.status == 200) {
+        const data = await response.json();
+        console.log(data);
+        navigate('/cadastroSucesso'); // Redirect to success page
+     }else{
+        alert('Dados inválidos');
+     }
   };
 
   return (
@@ -179,5 +198,5 @@ const FormAdmin = () => {
   );
 };
 
-export default FormAdmin;
+export default FormEntregador;
 

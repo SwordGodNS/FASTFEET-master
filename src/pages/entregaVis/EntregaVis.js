@@ -8,6 +8,8 @@ const EntregaVis = () => {
       <p>Esta página exibirá todas as entregas registradas.</p>
     </div>
   );
+
+
 };
 
 export default EntregaVis;

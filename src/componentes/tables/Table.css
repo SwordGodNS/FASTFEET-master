@@ -1,0 +1,27 @@
+.customTable {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.customTable > thead *, .customTable > tbody * {
+    margin: 0;
+    padding: 0;
+}
+
+.customTable > thead, .customTable > tbody {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.customTable > thead {
+    background-color: rgba(58, 39, 233, 0.774);
+    color: #ffffff;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.customTable > tbody > tr {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import './LoginEntregador.css';
 
-const LoginPage = ({ setIsAdmin }) => {
+const UserLoginPage = ({ setIsAuthenticated }) => {
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -31,7 +31,7 @@ const LoginPage = ({ setIsAdmin }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch('http://localhost:3333/admin/login', {
+    const response = await fetch('http://localhost:3333/usuario/login', {
       method: 'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
@@ -46,14 +46,17 @@ const LoginPage = ({ setIsAdmin }) => {
         const token = data.data.token
         console.log(token)
         localStorage.setItem('token', token);
-        setIsAdmin(true);
+        setIsAuthenticated(true);
         localStorage.setItem('isAdmin', 'true');
         if (rememberMe) {
           localStorage.setItem('rememberedCpf', cpf);
         } else {
           localStorage.removeItem('rememberedCpf');
         }
-        navigate('/cadastroSelect');
+        if (data.data.usuario) {
+          localStorage.setItem('id', data.data.usuario.id)
+        }
+        navigate('/entregasEntregador');
      }else{
         alert('Credenciais inválidas');
      }
@@ -112,4 +115,4 @@ const LoginPage = ({ setIsAdmin }) => {
   );
 }
 
-export default LoginPage;
+export default UserLoginPage;
