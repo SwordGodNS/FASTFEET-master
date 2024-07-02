@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserShield, faSignOutAlt, faTruck } from '@fortawesome/free-solid-svg-icons';
+import { faUserShield, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import logoPrincipal from '../../img/logoPrincipal.png';
 import './Navigator.css';
 
-const Navigator = ({ isAdmin, setIsAdmin }) => {
+const Navigator = ({ isAdmin, setIsAdmin, isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [showLogout, setShowLogout] = useState(false);
 
   const handleLogout = () => {
     setIsAdmin(false);
+    setIsAuthenticated(false);
     localStorage.removeItem('isAdmin');
     navigate('/');
   };
@@ -24,27 +24,31 @@ const Navigator = ({ isAdmin, setIsAdmin }) => {
     setShowLogout(false);
   };
 
+
   return (
     <nav className='navbar'>
       <ul>
         <li className="logo-link">
-          <Link to="/">
+          <Link to={isAuthenticated
+            ? isAdmin 
+              ? "/cadastroSelect" : "/entregasEntregador"
+            : "/"}>
             <img src={logoPrincipal} alt="Logo Principal" />
           </Link>
         </li>
-        {isAdmin && location.pathname !== '/formAdd' && location.pathname !== '/formAdmin' && location.pathname !== '/form' && (
-          <li className="entrega-link">
-            <Link to="/entregaVis">
-              <FontAwesomeIcon icon={faTruck} /> Visualizar entregas
-            </Link>
-          </li>
-        )}
-        {isAdmin && (
+        {isAuthenticated && (
           <li className="admin-links">
             <div className="admin-link" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            {isAdmin ? (
               <Link to="/cadastroSelect">
                 <FontAwesomeIcon icon={faUserShield} /> Admin
               </Link>
+              )
+            : (
+              <Link to="/entregasEntregador">
+                <FontAwesomeIcon icon={faUserShield} /> {localStorage.getItem('username') || "Entregador"}
+              </Link>
+            )}
               {showLogout && (
                 <ul className="dropdown">
                   <li>

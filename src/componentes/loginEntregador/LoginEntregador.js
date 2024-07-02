@@ -40,14 +40,13 @@ const UserLoginPage = ({ setIsAuthenticated }) => {
       })
      });
      
-     if (response.status == 200) {
+     if (response.status === 200) {
         const data = await response.json();
-        console.log(data);
         const token = data.data.token
-        console.log(token)
         localStorage.setItem('token', token);
         setIsAuthenticated(true);
         localStorage.setItem('isAdmin', 'true');
+        localStorage.setItem('username', data.data.usuario.nome);
         if (rememberMe) {
           localStorage.setItem('rememberedCpf', cpf);
         } else {

@@ -3,7 +3,7 @@ import { FaUser, FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const LoginPage = ({ setIsAdmin }) => {
+const LoginPage = ({ setIsAdmin, setIsAuthenticated }) => {
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -40,13 +40,12 @@ const LoginPage = ({ setIsAdmin }) => {
       })
      });
      
-     if (response.status == 200) {
+     if (response.status === 200) {
         const data = await response.json();
-        console.log(data);
         const token = data.data.token
-        console.log(token)
         localStorage.setItem('token', token);
         setIsAdmin(true);
+        setIsAuthenticated(true);
         localStorage.setItem('isAdmin', 'true');
         if (rememberMe) {
           localStorage.setItem('rememberedCpf', cpf);

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './EntregasEntregador.css';
 import Table from '../../componentes/tables/Table';
 
 const EntregasEntregador = ({ setIsAuthenticated }) => {
   const columns = [
-    "nome","telefone", "rua", "numero", "complemento", "CEP", "entregue"
+    "nome","telefone", "rua", "numero", "complemento", "cep", "entregue"
   ]
   const [data, setData] = useState([])
   const id = localStorage.getItem('id')
@@ -19,7 +18,7 @@ const EntregasEntregador = ({ setIsAuthenticated }) => {
         .then(response => response.json())
         .then(data => setData(data))
         .catch(error => console.error('Erro ao buscar dados:', error));
-  }, [])
+  }, [id, token]);
 
   return (
     <div className="cadastro-select-container">

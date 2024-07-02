@@ -69,16 +69,37 @@ const FormAdd = () => {
 
     console.log('Dados do formulário:', formData);
 
-    navigate('/cadastroSucesso');
+    // Send form
+    sendForm();
+  };
 
-    setFormData({
-      nome: '',
-      telefone: '',
-      rua: '',
-      numero: '',
-      cep: '',
-      complemento: ''
-    });
+  const sendForm = async () => {
+    const response = await fetch('http://localhost:3333/destinatario/create', {
+      method: 'post',
+      headers: {
+        'Content-Type':'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      },
+      body: JSON.stringify(
+       formData
+      )
+     });
+     
+     if (response.status === 200) {
+        const data = await response.json();
+        console.log(data);
+        navigate('/cadastroSucesso'); // Redirect to success page
+        setFormData({
+          nome: '',
+          telefone: '',
+          rua: '',
+          numero: '',
+          cep: '',
+          complemento: ''
+        });
+     } else {
+        alert('Ops algo deu errado');
+     }
   };
 
   return (

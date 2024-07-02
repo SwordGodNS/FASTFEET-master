@@ -22,7 +22,7 @@ const Table = ({columns, data, title}) => {
                         <td>{row.destinatario.rua}</td>
                         <td>{row.destinatario.numero}</td>
                         <td>{row.destinatario.complemento}</td>
-                        <td>{row.destinatario.CEP}</td>
+                        <td>{row.destinatario.cep}</td>
                         <td>{row.entregue ? 'Entregue' : 'Não entregue'}</td>
                     </tr>
                 ))}

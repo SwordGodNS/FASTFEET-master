@@ -7,9 +7,9 @@ import FormEntregador from './componentes/formEntregador/FormEntregador';
 import FormAdd from './componentes/formAdd/FormAdd';
 import CadastroSelect from './pages/cadastroSelect/CadastroSelect';
 import CadastroSucess from './pages/cadastroSucess/CadastroSucess';
-import EntregaVis from './pages/entregaVis/EntregaVis';
 import UserLoginPage from './componentes/loginEntregador/LoginEntregador';
 import EntregasEntregador from './pages/entregasEntregador/EntregasEntregador';
+import './App.css';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -33,26 +33,23 @@ function App() {
 
   return (
     <Router>
-      <Navigator isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
+      <Navigator isAdmin={isAdmin} setIsAdmin={setIsAdmin} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
       <Routes>
         <Route 
           path="/" 
           element={
-            isAuthenticated 
-              ? isAdmin 
-                ? <Navigate to="/cadastroSelect" /> 
-                : <Navigate to="/entregas" /> 
+            isAuthenticated && isAdmin 
+              ? <Navigate to="/cadastroSelect" />
               : <Navigate to="/loginEntregador" />
           } 
         />
         <Route path="/login" element={<LoginPage setIsAdmin={setIsAdmin} setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/loginEntregador" element={<UserLoginPage setIsAuthenticated={setIsAuthenticated} />} />
-        <Route path="/form" element={isAuthenticated ? <Form /> : <Navigate to="/form" />} />
+        <Route path="/form" element={isAdmin ? <Form /> : <Navigate to="/login" />} />
         <Route path="/formEntregador" element={isAdmin ? <FormEntregador /> : <Navigate to="/login" />} />
         <Route path="/formAdd" element={isAdmin ? <FormAdd /> : <Navigate to="/login" />} />
         <Route path="/cadastroSelect" element={isAdmin ? <CadastroSelect setIsAdmin={setIsAdmin} /> : <Navigate to="/login" />} />
         <Route path="/cadastroSucesso" element={isAdmin ? <CadastroSucess /> : <Navigate to="/login" />} />
-        <Route path="/entregaVis" element={isAdmin ? <EntregaVis /> : <Navigate to="/login" />} />
         <Route path="/entregasEntregador" element={isAuthenticated ? <EntregasEntregador /> : <Navigate to="/loginEntregador" />} />
       </Routes>
     </Router>
